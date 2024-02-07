@@ -2,13 +2,13 @@ from pathlib import Path
 import environ
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = environ.Path(__file__) - 2
 
 # .envファイルを読み込む
 env = environ.Env()
 
 # .envファイルが存在する場合は読み込む
-env.read_env(str(BASE_DIR / ".env"))
+environ.Env.read_env(env_file=str(BASE_DIR.path('.env')))
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
@@ -17,7 +17,7 @@ env.read_env(str(BASE_DIR / ".env"))
 SECRET_KEY = env("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env("DEBUG", default=False)
+DEBUG = env.bool("DEBUG", default=False)
 
 ALLOWED_HOSTS = []
 
@@ -69,11 +69,11 @@ WSGI_APPLICATION = "firstproject.wsgi.application"
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': env('DB_NAME'),
-        'USER': env('DB_USER'),
-        'PASSWORD': env('DB_PASSWORD'),
-        'HOST': env('DB_HOST'),  # あるいはあなたのPostgreSQLサーバーのIPアドレス
-        'PORT': env('DB_PORT'),  # PostgreSQLのデフォルトポート
+        'NAME': env("DB_NAME"),
+        'USER':  env("DB_USER"),
+        'PASSWORD': env("DB_PASSWORD"),
+        'HOST': env("DB_HOST"),  # あるいはあなたのPostgreSQLサーバーのIPアドレス
+        'PORT': env("DB_PORT"),  # PostgreSQLのデフォルトポート
     }
 }
 
