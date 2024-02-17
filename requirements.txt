@@ -1,1 +1,10 @@
 djangorestframework
+environ
+os
+rest_framework
+serializers
+sys
+path
+AppConfig
+Response
+gunicorn
