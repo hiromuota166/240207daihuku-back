@@ -1,9 +1,2 @@
 djangorestframework
-environ
-rest_framework
-serializers
-sys
-path
-AppConfig
-Response
 gunicorn
