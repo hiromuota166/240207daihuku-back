@@ -1,6 +1,5 @@
 djangorestframework
 environ
-os
 rest_framework
 serializers
 sys
